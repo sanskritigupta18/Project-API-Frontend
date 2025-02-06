@@ -48,7 +48,31 @@ import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { logout } from "../services/operations/authApi";
 
-const projectApis = [
+const UserPage = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+    oldPassword: "",
+    newPassword: "",
+  });
+  const [currentUser, setCurrentUser] = useState(null);
+  const [apikey, setApikey] = useState(""); // Store API key (fetched after login)
+  const [copied, setCopied] = useState(false); // Track copy state
+  const { user,token } = useSelector((state) => state.profile);
+  const [selectedApi, setSelectedApi] = useState("project");
+  const [selectedApiDetails, setSelectedApiDetails] = useState(null);
+  const [highlightedResponse, setHighlightedResponse] = useState(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData({ ...userData, [name]: value });
+  };
+
+  const projectApis = [
   {
     method: "POST",
     endpoint: "https://project-api-1sks.onrender.com/api/v1/project/create",
@@ -77,7 +101,7 @@ const projectApis = [
   },
   {
     method: "GET",
-    endpoint: "https://project-api-1sks.onrender.com/api/v1/project/get/",
+    endpoint: `https://project-api-1sks.onrender.com/api/v1/project/get/${user.apikey}`,
     description: "Get all projects",
     requestBody: `{
       "apikey": "user_api_key"
@@ -136,7 +160,7 @@ const projectApis = [
   },
   {
     method: "DELETE",
-    endpoint: "/api/v1/project/delete",
+    endpoint: "https://project-api-1sks.onrender.com/api/v1/project/delete",
     description: "Delete a project",
     requestBody: `{
       "projectId": "project_id"
@@ -232,29 +256,6 @@ const userApis = [
   },
 ];
 
-const UserPage = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isChangingPassword, setIsChangingPassword] = useState(false);
-  const [userData, setUserData] = useState({
-    email: "",
-    password: "",
-    oldPassword: "",
-    newPassword: "",
-  });
-  const [currentUser, setCurrentUser] = useState(null);
-  const [apikey, setApikey] = useState(""); // Store API key (fetched after login)
-  const [copied, setCopied] = useState(false); // Track copy state
-  const { user,token } = useSelector((state) => state.profile);
-  const [selectedApi, setSelectedApi] = useState("project");
-  const [selectedApiDetails, setSelectedApiDetails] = useState(null);
-  const [highlightedResponse, setHighlightedResponse] = useState(null);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  // Handle input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserData({ ...userData, [name]: value });
-  };
 
   const handleResponseHighlight = (responseType) => {
     setHighlightedResponse(responseType); // Toggle between 'request' and 'response'
