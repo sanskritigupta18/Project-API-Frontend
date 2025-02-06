@@ -1,11 +1,13 @@
 // src/components/Signup.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { signup } from '../services/operations/authApi';
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
@@ -14,6 +16,7 @@ const Signup = () => {
     try {
       // Mock API call or replace with actual signup API logic
       setMessage("Signup successful! You can now login.");
+      dispatch(signupemail, password, navigate));
       setEmail("");
       setPassword("");
     } catch (err) {
