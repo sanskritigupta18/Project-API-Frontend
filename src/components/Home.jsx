@@ -32,6 +32,78 @@ const projectApis = [
     "message": "Project created successfully"
   }`,
   },
+  {
+    method: "GET",
+    endpoint: "/api/v1/project/get",
+    description: "Get all projects",
+    requestBody: `{
+    "apikey": "user_api_key"
+  }`,
+    responseBody: `{
+    "status": 200,
+    "data": [
+        {
+            "title": "Project 1",
+            "description": "Description 1",
+            "image": "image_url_1",
+            "github_url": "github_url_1",
+            "project_url": "project_url_1",
+            "techstack": ["tech1", "tech2"],
+            "userId": "user_id"
+        },
+        {
+            "title": "Project 2",
+            "description": "Description 2",
+            "image": "image_url_2",
+            "github_url": "github_url_2",
+            "project_url": "project_url_2",
+            "techstack": ["tech3", "tech4"],
+            "userId": "user_id"
+        }
+    ],
+    "message": "Projects fetched successfully"
+  }`,
+  },
+  {
+    method: "PATCH",
+    endpoint: "/api/v1/project/update",
+    description: "Update project details",
+    requestBody: `{
+    "projectId": "project_id",
+    "title": "Updated Project",
+    "description": "Updated description",
+    "image": "updated_image_url",
+    "github_url": "updated_github_url",
+    "project_url": "updated_project_url",
+    "techstack": ["updated_tech1", "updated_tech2"]
+  }`,
+    responseBody: `{
+    "status": 200,
+    "data": {
+        "title": "Updated Project",
+        "description": "Updated description",
+        "image": "updated_image_url",
+        "github_url": "updated_github_url",
+        "project_url": "updated_project_url",
+        "techstack": ["updated_tech1", "updated_tech2"],
+        "userId": "user_id"
+    },
+    "message": "Project updated successfully"
+  }`,
+  },
+  {
+    method: "DELETE",
+    endpoint: "/api/v1/project/delete",
+    description: "Delete a project",
+    requestBody: `{
+    "projectId": "project_id"
+  }`,
+    responseBody: `{
+    "status": 200,
+    "data": {},
+    "message": "Project deleted successfully"
+  }`,
+  },
 ];
 
 const userApis = [
@@ -50,6 +122,69 @@ const userApis = [
         "apikey": "generated_api_key"
     },
     "message": "User created successfully"
+  }`,
+  },
+  {
+    method: "POST",
+    endpoint: "/api/v1/user/login",
+    description: "Login a user",
+    requestBody: `{
+    "email": "user@example.com",
+    "password": "user_password"
+  }`,
+    responseBody: `{
+    "status": 200,
+    "data": {
+        "user": {
+            "email": "user@example.com"
+        },
+        "accessToken": "generated_access_token",
+        "refreshToken": "generated_refresh_token"
+    },
+    "message": "User logged in successfully"
+  }`,
+  },
+  {
+    method: "POST",
+    endpoint: "/api/v1/user/logout",
+    description: "Logout a user",
+    requestBody: `{
+    "apikey": "user_api_key"
+  }`,
+    responseBody: `{
+    "status": 200,
+    "data": {},
+    "message": "User logged out"
+  }`,
+  },
+  {
+    method: "POST",
+    endpoint: "/api/v1/user/change-password",
+    description: "Change user password",
+    requestBody: `{
+    "oldPassword": "old_password",
+    "newPassword": "new_password"
+  }`,
+    responseBody: `{
+    "status": 200,
+    "data": {},
+    "message": "Password changed successfully"
+  }`,
+  },
+  {
+    method: "GET",
+    endpoint: "/api/v1/user/current-user",
+    description: "Get current user details",
+    requestBody: `{
+    "apikey": "user_api_key"
+  }`,
+    responseBody: `{
+    "status": 200,
+    "data": {
+        "email": "user@example.com",
+        "apikey": "user_api_key"
+    },
+    "message": "User details fetched successfully"
   }`,
   },
 ];
