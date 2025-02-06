@@ -1,4 +1,4 @@
-const BASE_URL = "https://project-api-xagp.onrender.com/api/v1"
+const BASE_URL = "https://project-api-1sks.onrender.com"
 export const userEndpoints = {
     REGISTER_USER: BASE_URL + "/user/register",
     LOGIN_USER: BASE_URL + "/user/login",
