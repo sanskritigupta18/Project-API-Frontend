@@ -51,7 +51,7 @@ import { logout } from "../services/operations/authApi";
 const projectApis = [
   {
     method: "POST",
-    endpoint: "/api/v1/project/create",
+    endpoint: "https://project-api-1sks.onrender.com/api/v1/project/create",
     description: "Create a new project",
     requestBody: `{
       "title": "New Project",
@@ -77,7 +77,7 @@ const projectApis = [
   },
   {
     method: "GET",
-    endpoint: "/api/v1/project/get",
+    endpoint: "https://project-api-1sks.onrender.com/api/v1/project/get/",
     description: "Get all projects",
     requestBody: `{
       "apikey": "user_api_key"
@@ -109,7 +109,7 @@ const projectApis = [
   },
   {
     method: "PATCH",
-    endpoint: "/api/v1/project/update",
+    endpoint: "https://project-api-1sks.onrender.com/api/v1/project/update",
     description: "Update project details",
     requestBody: `{
       "projectId": "project_id",
@@ -152,7 +152,7 @@ const projectApis = [
 const userApis = [
   {
     method: "POST",
-    endpoint: "/api/v1/user/register",
+    endpoint: "https://project-api-1sks.onrender.com/api/v1/user/register",
     description: "Register a new user",
     requestBody: `{
       "email": "user@example.com",
@@ -169,7 +169,7 @@ const userApis = [
   },
   {
     method: "POST",
-    endpoint: "/api/v1/user/login",
+    endpoint: "https://project-api-1sks.onrender.com/api/v1/user/login",
     description: "Login a user",
     requestBody: `{
       "email": "user@example.com",
@@ -189,7 +189,7 @@ const userApis = [
   },
   {
     method: "POST",
-    endpoint: "/api/v1/user/logout",
+    endpoint: "https://project-api-1sks.onrender.com/api/v1/user/logout",
     description: "Logout a user",
     requestBody: `{
       "apikey": "user_api_key"
@@ -202,7 +202,7 @@ const userApis = [
   },
   {
     method: "POST",
-    endpoint: "/api/v1/user/change-password",
+    endpoint: "https://project-api-1sks.onrender.com/api/v1/user/change-password",
     description: "Change user password",
     requestBody: `{
       "oldPassword": "old_password",
@@ -216,7 +216,7 @@ const userApis = [
   },
   {
     method: "GET",
-    endpoint: "/api/v1/user/current-user",
+    endpoint: "https://project-api-1sks.onrender.com/api/v1/user/current-user",
     description: "Get current user details",
     requestBody: `{
       "apikey": "user_api_key"
