@@ -16,7 +16,7 @@ const Signup = () => {
     try {
       // Mock API call or replace with actual signup API logic
       setMessage("Signup successful! You can now login.");
-      dispatch(signupemail, password, navigate));
+      dispatch(signupemail, password, navigate);
       setEmail("");
       setPassword("");
     } catch (err) {
